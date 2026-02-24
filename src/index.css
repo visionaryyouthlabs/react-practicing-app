@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+}
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 20px;
+    background-color: rgb(30, 173, 173);
+    color: white;
+}
+.navbar-container a{
+    color: white;
+    text-decoration: none;
+}
+.navbar-container ul{
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+}

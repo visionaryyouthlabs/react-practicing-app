@@ -1,6 +1,10 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { use } from "react";
 import { Link } from "react-router"
+import { AuthContext } from "../contexts/AuthContext";
 
 const Register = () => {
+    const {createUser} = use(AuthContext);
 
     const handleRegisterForm = (e) => {
         e.preventDefault();
@@ -8,6 +12,7 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const photoURL = e.target.photo.value;
+        createUser(email, password, name, photoURL);
 
     }
     return(
@@ -24,6 +29,7 @@ const Register = () => {
                 <br /><br />
                 <button style={{padding: "10px", fontSize: "20px"}} type="submit">Register</button>
             </form>
+            
             <p>Already have an account? <Link to="/login"> Login </Link> </p>
         </div>
     )

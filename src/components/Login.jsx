@@ -1,11 +1,16 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router"
+import { use } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
+    const {signInUser} = use(AuthContext);
+
     const handleLoginForm = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(password, email)
+        signInUser(email, password);
     }
     return(
         <div style={{padding: "30px", }}>

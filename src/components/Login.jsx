@@ -1,16 +1,18 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { use } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
     const {signInUser} = use(AuthContext);
+    const navigate = useNavigate();
 
     const handleLoginForm = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         signInUser(email, password);
+        navigate("/")
     }
     return(
         <div style={{padding: "30px", }}>

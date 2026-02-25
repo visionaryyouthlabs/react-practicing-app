@@ -1,9 +1,20 @@
 import { use } from "react"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { AuthContext } from "../contexts/AuthContext"
 
 const Navbar = () => {
+    const navigate = useNavigate();
+
     const { user, LogOut } = use(AuthContext);
+    const handleLogOut = async() => {
+        try {
+            await LogOut();
+            navigate("/");
+        } catch (error) {
+            console.log("log out error happened", error)
+        }
+
+    }
     return (
         <div className="navbar-container">
             <h2>React Practicing</h2>
@@ -11,7 +22,7 @@ const Navbar = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 {
-                    user ? <li onClick={LogOut} style={{ border: "none", cursor: "pointer" }}> LogOut</li>
+                    user ? <li onClick={handleLogOut} style={{ border: "none", cursor: "pointer" }}> LogOut</li>
                         : <li><Link to="/login">Login</Link></li>
                 }
             </ul>

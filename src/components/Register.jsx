@@ -7,14 +7,19 @@ const Register = () => {
     const {createUser} = use(AuthContext);
     const navigate = useNavigate();
 
-    const handleRegisterForm = (e) => {
+    const handleRegisterForm = async(e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const photoURL = e.target.photo.value;
-        createUser(email, password, name, photoURL);
-        navigate("/")
+        
+        try {
+            await createUser(email, password, name, photoURL);
+            navigate("/profile")
+        } catch (error) {
+            console.log(error)
+        }
     }
     return(
         <div style={{padding: "30px", }}>

@@ -12,7 +12,7 @@ const Profile = () => {
                 <div className="profileDetails">
                     {/* Profile details */}
                     <div>
-                        <img className="profilePhoto" src={user && user.photoURL} alt="User photo" />
+                        <img className="profilePhoto" src={user && user.photoURL} alt="User photo" referrerPolicy="no-referrer" />
                         <h2> {user && user.displayName} </h2>
                         <p>{user && user.email} <br />
                             {user && user.phoneNumber}</p>

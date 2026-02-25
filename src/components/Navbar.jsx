@@ -10,21 +10,20 @@ const Navbar = () => {
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/login">Login</Link></li>
+                {
+                    user ? <li onClick={LogOut} style={{ border: "none", cursor: "pointer" }}> LogOut</li>
+                        : <li><Link to="/login">Login</Link></li>
+                }
             </ul>
             {/* Profile details */}
-            {
-                user &&
-                <div>
-                    <div style={{ display: "flex", gap: "4px" }}>
-                        <img style={{ width: "60px", height: "60px", borderRadius: "50%", border: "2px solid blue" }} src={user && user.photoURL} alt={user && user.displayName} />
-                        <button onClick={LogOut} style={{ backgroundColor: "transparent", border: "none", color: "blue", fontWeight: "800", fontSize: "16px", cursor: "pointer" }}>Log Out</button>
-                    </div>
-                    <p>{user && user.displayName || "Unknown"} <br />
-                        {user && user.email}
-                    </p>
-                </div>
-            }
+            <div>
+                {
+                    user &&
+                    <Link to="/profile">
+                        <img style={{ width: "60px", height: "60px", borderRadius: "50%", border: "2px solid blue" }} src={user?.photoURL} alt={user && user.displayName} />
+                    </Link>
+                }
+            </div>
         </div>
     )
 }

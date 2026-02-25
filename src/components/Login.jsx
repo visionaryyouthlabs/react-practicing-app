@@ -4,15 +4,15 @@ import { use } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
-    const {signInUser} = use(AuthContext);
+    const {signInUser, user, loading} = use(AuthContext);
     const navigate = useNavigate();
 
-    const handleLoginForm = (e) => {
+    const handleLoginForm = async(e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        signInUser(email, password);
-        navigate("/")
+        signInUser(email, password)
+        
     }
     return(
         <div style={{padding: "30px", }}>

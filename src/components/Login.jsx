@@ -1,10 +1,12 @@
-import { Link, useNavigate } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import { use } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
     const {signInUser, user, signInWithGoogle} = use(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state || "/profile";
 
     const handleLoginForm = async(e) => {
         e.preventDefault();
@@ -12,7 +14,7 @@ const Login = () => {
         const password = e.target.password.value;
         try {
             await signInUser(email, password);
-            navigate("/profile")
+            navigate(from)
         } catch (error) {
             console.log("Signin error happened", error);
         }
@@ -22,7 +24,7 @@ const Login = () => {
         signInWithGoogle()
         .then(result => {
             if(result.user){
-                navigate("/profile")
+                navigate(from)
             }
         }).then(err => console.log("Google login error happened", err))
     }

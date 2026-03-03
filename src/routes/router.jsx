@@ -22,9 +22,9 @@ const router = createBrowserRouter([
             {
                 element: <ProtectedRoute />,
                 children: [
-                    { path: "about", element: <AboutPage></AboutPage> },
+                    { path: "about", element: <AboutPage /> },
                     {
-                        Component: Profile,
+                        element: <Profile />,
                         children: [
                             { path: "settings", element: <Settings></Settings> },
                             { path: "users-list", element: <UsersList /> },

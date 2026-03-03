@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 
 const AuthProvider = ({ children }) => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const provider = new GoogleAuthProvider();
 

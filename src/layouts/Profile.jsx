@@ -1,5 +1,5 @@
 import { use } from "react"
-import { Link, NavLink, Outlet } from "react-router"
+import { NavLink, Outlet } from "react-router"
 import { AuthContext } from "../contexts/AuthContext"
 
 const Profile = () => {

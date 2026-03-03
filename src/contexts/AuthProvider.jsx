@@ -35,8 +35,10 @@ const AuthProvider = ({ children }) => {
             if(name || photoUrl){
                 await updateProfile(auth.currentUser, {
                     displayName: name || auth.currentUser.displayName,
-                    photoURL: photoUrl || auth.currentUser.photoURL
+                    photoURL: photoUrl
                 });
+                await auth.currentUser.reload();
+                setUser({...auth.currentUser})
             }
             // Update email
             if(email && email !== auth.currentUser.email){

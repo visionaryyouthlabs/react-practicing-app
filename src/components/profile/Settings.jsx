@@ -8,7 +8,10 @@ const Settings = () => {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         const updatedUserInfo = Object.fromEntries(data.entries());
-        updateUser(updatedUserInfo);
+        updateUser(updatedUserInfo)
+        .then(() => {
+            alert("Update successful")
+        })
     }
     return (
         <div className="settings">
